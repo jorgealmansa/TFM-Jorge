@@ -1,0 +1,178 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: host1
+  namespace: scenario
+  labels:
+    app: host1
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "h1-ingress-net",
+          "interface": "net1",
+          "ips": [ "10.1.1.3/24" ],
+          "gateway": "10.1.1.2", 
+          "mac": "02:42:0a:01:01:03"
+        }
+      ]
+spec:
+  containers:
+  - name: host1
+    image: jorgealmansa/scapy:latest
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN"]
+    command:
+      - /bin/sh
+      - -c
+      - |
+        ethtool -K eth0 tx off sg off tso off
+        chmod +x /home/p4/pot/docker/run.sh
+        /home/p4/pot/docker/run.sh host 1
+    volumeMounts:
+    - mountPath: /home/p4/pot
+      name: pot-volume
+    - mountPath: /home/p4/pot/docker/run.sh
+      name: pot-run-config
+      subPath: run.sh
+
+  volumes:
+  - name: pot-volume
+    hostPath:
+      path: /home/mw/PoT_PRIVATEER
+      type: Directory
+  - name: pot-run-config
+    configMap:
+      name: pot-run-config
+      defaultMode: 0755
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ingressnode
+  namespace: scenario
+  labels:
+    app: ingressnode
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "h1-ingress-net",
+          "interface": "net1",
+          "ips": [ "10.1.1.2/24" ],
+          "mac": "02:42:0a:01:01:02"
+        },
+        {
+          "name": "cluster-controller",
+          "interface": "net3",
+          "ips": [ "10.0.0.11/24" ],
+          "mac": "02:42:0a:00:00:0b"
+        },
+        {
+          "name": "cluster-network",
+          "interface": "net2",
+          "ips": [ "10.0.1.3/24" ],
+          "mac": "02:42:0a:00:01:03"
+        }
+      ]
+spec:
+  dnsConfig:
+    nameservers:
+      - 8.8.8.8
+  containers:
+  - name: ingressnode
+    image: jorgealmansa/p4custom-kafka:latest
+    securityContext:
+      privileged: true
+    command:
+      - /bin/sh
+      - -c
+      - |
+        apt update && apt install -y iptables
+        echo 1 > /proc/sys/net/ipv4/ip_forward
+        chmod +x /home/p4/pot/docker/run.sh
+        /home/p4/pot/docker/run.sh 11
+    volumeMounts:
+    - mountPath: /home/p4/pot
+      name: pot-volume
+    - mountPath: /home/p4/pot/docker/run.sh
+      name: pot-run-config
+      subPath: run.sh
+
+  volumes:
+  - name: pot-volume
+    hostPath:
+      path: /home/mw/PoT_PRIVATEER
+      type: Directory
+  - name: pot-run-config
+    configMap:
+      name: pot-run-config
+      defaultMode: 0755
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: host2
+  namespace: scenario
+  labels:
+    app: host2
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "h2-cluster-egress",
+          "interface": "net1",
+          "ips": [ "10.1.2.3/24" ],
+          "gateway": "10.1.2.2",
+          "mac": "02:42:0a:01:02:03"
+        }
+      ]
+spec:
+  containers:
+  - name: host2
+    image: jorgealmansa/scapy:latest
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN"]
+    command:
+      - /bin/sh
+      - -c
+      - |
+        ethtool -K eth0 tx off sg off tso off
+        arp -s 10.1.2.2 02:42:0a:01:02:02
+        chmod +x /home/p4/pot/docker/run.sh
+        /home/p4/pot/docker/run.sh host 2
+    volumeMounts:
+    - mountPath: /home/p4/pot
+      name: pot-volume
+    - mountPath: /home/p4/pot/docker/run.sh
+      name: pot-run-config
+      subPath: run.sh
+  volumes:
+  - name: pot-volume
+    hostPath:
+      path: /home/mw/PoT_PRIVATEER
+      type: Directory
+  - name: pot-run-config
+    configMap:
+      name: pot-run-config
+      defaultMode: 0755
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingressnode-service
+  namespace: scenario
+spec:
+  type: ClusterIP
+  selector:
+    app: ingressnode
+  ports:
+    - name: grpc
+      protocol: TCP
+      port: 50001
+      targetPort: 50001
+  externalIPs:
+    - 192.168.159.60  # IP del nodo físico o una IP estática accesible desde fuera

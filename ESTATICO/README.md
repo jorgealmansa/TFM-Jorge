@@ -15,3 +15,5 @@ kubectl apply -f run-script-configmap.yaml
 ```
 kubectl apply -f k8s-deployments.yaml
 ```
+
+También es necesario copiar la carpeta de PoT_PRIVATEER.

@@ -1,0 +1,19 @@
+vnfd:
+  description: KNF created to deploy egress with tdx scenario
+  df:
+  - id: default-df
+  ext-cpd:
+  - id: mgmt-ext
+    k8s-cluster-net: mgmtnet
+  id: egress-tdx_knf_2
+  k8s-cluster:
+    nets:
+    - id: mgmtnet
+  id: egress-tdx_knf_2
+  product-name: egress-tdx_knf_2
+  mgmt-cp: mgmt-ext
+  kdu:
+  - name: egress-tdx2
+    helm-chart: egress-tdx2
+  provider: Telefonica
+  version: 1.0

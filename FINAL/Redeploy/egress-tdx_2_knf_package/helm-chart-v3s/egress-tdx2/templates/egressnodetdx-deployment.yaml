@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.egressnode.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.egressnode.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.egressnode.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.egressnode.name }}
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          {{ toJson .Values.egressnode.networks | indent 10 }}
+        io.containerd.cri.runtime-handler: "{{ .Values.egressnode.runtimeHandler }}"
+    spec:
+      runtimeClassName: "{{ .Values.egressnode.runtimeClassName }}"
+      containers:
+      - name: {{ .Values.egressnode.name }}
+        image: {{ .Values.egressnode.image }}
+        securityContext:
+          privileged: {{ .Values.egressnode.privileged }}
+        command:
+{{ toYaml .Values.egressnode.command | nindent 10 }}
+        volumeMounts:
+{{ toYaml .Values.egressnode.volumeMounts | nindent 10 }}
+      volumes:
+{{ toYaml .Values.egressnode.volumes | nindent 8 }}

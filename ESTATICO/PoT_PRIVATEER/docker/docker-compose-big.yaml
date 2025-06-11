@@ -1,0 +1,143 @@
+version: '3'
+services:
+    h1:
+        image: scapy
+        container_name: h1
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh host 1
+        networks:
+            h1_net:
+                ipv4_address: 10.1.1.3
+        volumes:
+        - ../:/home/p4/pot
+    ingressNode:
+        image: p4custom-kafka
+        container_name: ingressNode
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh 11
+        networks:
+            h1_net:
+                ipv4_address: 10.1.1.2
+            ingress_net:
+                ipv4_address: 10.0.1.3
+            controller:
+                ipv4_address: 10.0.0.11
+        volumes:
+        - ../:/home/p4/pot
+    egressNode:
+        image: p4custom-kafka
+        container_name: egressNode
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh 14
+        networks:
+            zegress_net:
+                ipv4_address: 10.0.3.2
+            zh2_net:
+                ipv4_address: 10.1.2.2
+            controller:
+                ipv4_address: 10.0.0.14
+        volumes:
+        - ../:/home/p4/pot
+    h2:
+        image: scapy
+        container_name: h2
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh host 2
+        networks:
+            zh2_net:
+                ipv4_address: 10.1.2.3
+        volumes:
+        - ../:/home/p4/pot
+    controller:
+        image: p4custom-kafka
+        container_name: controller
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command:  /home/p4/pot/docker/run.sh controller 4
+        networks:
+            controller:
+                ipv4_address: 10.0.0.10
+            kafka-net:
+                ipv4_address: 10.2.1.10
+        volumes:
+        - ../:/home/p4/pot
+    middleNode1:
+        image: p4custom-kafka
+        container_name: middleNode1
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh 12
+        networks:
+            ingress_net:
+                ipv4_address: 10.0.1.2
+            middle1_middle2_net:
+                ipv4_address: 10.0.2.3
+            controller:
+                ipv4_address: 10.0.0.12
+        volumes:
+        - ../:/home/p4/pot
+    middleNode2:
+        image: p4custom-kafka
+        container_name: middleNode2
+        cap_add:
+        - NET_ADMIN
+        privileged: true
+        command: /home/p4/pot/docker/run.sh 13
+        networks:
+            middle1_middle2_net:
+                ipv4_address: 10.0.2.2
+            zegress_net:
+                ipv4_address: 10.0.3.3
+            controller:
+                ipv4_address: 10.0.0.13
+        volumes:
+        - ../:/home/p4/pot
+networks:
+    h1_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.1.1.0/24
+    ingress_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.1.0/24
+    zegress_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.3.0/24
+    zh2_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.1.2.0/24
+    controller:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.0.0/24
+    kafka-net:
+        external: true
+    middle1_middle2_net:
+        driver: bridge
+        ipam: 
+            driver: default
+            config:
+                - subnet: 10.0.2.0/24

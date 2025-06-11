@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: middlenode-1
+  namespace: scenario
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: middlenode-1
+  template:
+    metadata:
+      labels:
+        app: middlenode-1
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "ingress-middle1-net",
+              "interface": "net1",
+              "ips": [ "10.0.1.2/24" ],
+              "mac": "02:42:0a:00:01:02"
+            },
+            {
+              "name": "middle1-middle2-net",
+              "interface": "net2",
+              "ips": [ "10.0.2.3/24" ],
+              "mac": "02:42:0a:00:02:03"
+            },
+            {
+              "name": "controller-net",
+              "interface": "net3",
+              "ips": [ "10.0.0.12/24" ],
+              "mac": "02:42:0a:00:00:0c"
+            }
+          ]
+        io.containerd.cri.runtime-handler: kata-qemu-tdx
+    spec:
+      runtimeClassName: kata-qemu-tdx
+      containers:
+      - name: middlenode-1
+        image: jorgealmansa/p4custom-kafka:encrypted-squashed
+        securityContext:
+          privileged: true
+        command:
+          - /bin/sh
+          - -c
+          - |
+            
+            chmod +x /home/p4/pot/docker/run.sh
+            /home/p4/pot/docker/run.sh 12
+        resources:
+          requests:
+            cpu: "16"  # Solicita 1 núcleo de CPU
+          limits:
+            cpu: "16"
+        volumeMounts:
+        - mountPath: /home/p4/pot
+          name: pot-volume
+        - mountPath: /home/p4/pot/docker/run.sh
+          name: pot-run-config
+          subPath: run.sh
+          
+      volumes:
+      - name: pot-volume
+        hostPath:
+          path: /home/mw/PoT_PRIVATEER
+          type: Directory
+      - name: pot-run-config
+        configMap:
+          name: pot-run-config
+          defaultMode: 0755

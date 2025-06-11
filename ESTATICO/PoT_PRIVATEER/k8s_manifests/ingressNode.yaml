@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingressnode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingressnode
+  template:
+    metadata:
+      labels:
+        app: ingressnode
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "static-net",
+              "ips": ["10.0.0.11"],
+              "mac": "02:42:0a:00:01:03"
+            }
+          ]
+    spec:
+      containers:
+      - name: ingressnode
+        image: jorgealmansa/p4custom-java:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ["/bin/sh", "-c", "ethtool -K eth0 tx off sg off tso off; /home/p4/pot/docker/run.sh ingress"]

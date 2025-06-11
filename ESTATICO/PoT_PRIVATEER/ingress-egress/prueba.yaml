@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: egressnode
+  namespace: scenario
+  labels:
+    app: egressnode
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "cluster-network",
+          "interface": "net1",
+          "ips": [ "10.0.3.2/24" ],
+          "mac": "02:42:0a:00:03:02"
+        },
+        {
+          "name": "egress-h2-net",
+          "interface": "net2",
+          "ips": [ "10.1.2.2/24" ],
+          "mac": "02:42:0a:01:02:02"
+        },
+        {
+          "name": "cluster-controller-egress",
+          "interface": "net3",
+          "ips": [ "10.0.0.14/24" ],
+          "mac": "02:42:0a:00:00:0e"
+        }
+      ]
+    io.containerd.cri.runtime-handler: kata-qemu-tdx
+spec:
+  runtimeClassName: kata-qemu-tdx
+  dnsConfig:
+    nameservers:
+      - 8.8.8.8
+  containers:
+  - name: egressnode
+    image: jorgealmansa/p4custom-kafka:squashed
+    securityContext:
+      privileged: true
+    command:
+      - /bin/sh
+      - -c
+      - |
+        apt update && apt install -y iptables
+        sudo chmod +x /home/p4/pot/docker/run.sh
+        sudo /home/p4/pot/docker/run.sh 14
+    volumeMounts:
+    - mountPath: /home/p4/pot
+      name: pot-volume
+    - mountPath: /home/p4/pot/docker/run.sh
+      name: pot-run-config
+      subPath: run.sh
+  volumes:
+  - name: pot-volume
+    hostPath:
+      path: /home/mw/PoT_PRIVATEER
+      type: Directory
+  - name: pot-run-config
+    configMap:
+      name: pot-run-config
+      defaultMode: 0755

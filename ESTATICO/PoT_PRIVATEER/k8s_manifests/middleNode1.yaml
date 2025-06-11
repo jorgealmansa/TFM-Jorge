@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: middlenode1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: middlenode1
+  template:
+    metadata:
+      labels:
+        app: middlenode1
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "static-net",
+              "ips": ["10.0.0.12"],
+              "mac": "02:42:0a:00:02:03"
+            }
+          ]
+    spec:
+      containers:
+      - name: middlenode1
+        image: jorgealmansa/p4custom-java:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ["/bin/sh", "-c", "/home/p4/pot/docker/run.sh middle"]

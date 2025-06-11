@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: prueba
+  namespace: scenario
+  labels:
+    app: prueba
+  annotations:
+    io.containerd.cri.runtime-handler: kata-qemu-tdx
+spec:
+  runtimeClassName: kata-qemu-tdx
+  containers:
+    - name: prueba
+      image: jorgealmansa/p4custom-kafka:squashed
+      securityContext:
+        privileged: true
+      
+      

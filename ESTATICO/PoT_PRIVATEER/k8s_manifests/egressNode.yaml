@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: egressnode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: egressnode
+  template:
+    metadata:
+      labels:
+        app: egressnode
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "static-net",
+              "ips": ["10.0.0.13"],
+              "mac": "02:42:0a:01:02:02"
+            }
+          ]
+    spec:
+      containers:
+      - name: egressnode
+        image: jorgealmansa/p4custom-java:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ["/bin/sh", "-c", "/home/p4/pot/docker/run.sh egress"]

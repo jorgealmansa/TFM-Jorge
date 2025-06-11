@@ -1,0 +1,124 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: host1
+  namespace: scenario
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: host1
+  template:
+    metadata:
+      labels:
+        app: host1
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "h1-ingress-net",
+              "interface": "net1",
+              "ips": [ "10.1.1.3/24" ],
+              "gateway": "10.1.1.2", 
+              "mac": "02:42:0a:01:01:03"
+            }
+          ]
+    spec:
+      containers:
+      - name: host1
+        image: jorgealmansa/scapy:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command:
+          - /bin/sh
+          - -c
+          - |
+            # Desactiva offloads en la interfaz principal
+            ethtool -K eth0 tx off sg off tso off
+            # Ajustar permisos y ejecutar el script
+            chmod +x /home/p4/pot/docker/run.sh
+            /home/p4/pot/docker/run.sh host 1
+        volumeMounts:
+        - mountPath: /home/p4/pot
+          name: pot-volume
+        - mountPath: /home/p4/pot/docker/run.sh
+          name: pot-run-config
+          subPath: run.sh
+          
+      volumes:
+      - name: pot-volume
+        hostPath:
+          path: /home/mw/PoT_PRIVATEER
+          type: Directory
+      - name: pot-run-config
+        configMap:
+          name: pot-run-config
+          defaultMode: 0755
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingressnode
+  namespace: scenario
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingressnode
+  template:
+    metadata:
+      labels:
+        app: ingressnode
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "h1-ingress-net",
+              "interface": "net1",
+              "ips": [ "10.1.1.2/24" ],
+              "mac": "02:42:0a:01:01:02"
+            },
+            {
+              "name": "controller-net",
+              "interface": "net3",
+              "ips": [ "10.0.0.11/24" ],
+              "mac": "02:42:0a:00:00:0e"
+            },
+            {
+              "name": "cluster-network",
+              "interface": "net2",
+              "ips": [ "10.0.1.3/24" ],
+              "mac": "02:42:0a:00:01:03"
+            }
+          ]
+    spec:
+      containers:
+      - name: ingressnode
+        image: jorgealmansa/p4custom-kafka:latest
+        securityContext:
+          privileged: true
+        command:
+          - /bin/sh
+          - -c
+          - |
+            
+            chmod +x /home/p4/pot/docker/run.sh
+            /home/p4/pot/docker/run.sh 11
+        volumeMounts:
+        - mountPath: /home/p4/pot
+          name: pot-volume
+        - mountPath: /home/p4/pot/docker/run.sh
+          name: pot-run-config
+          subPath: run.sh
+          
+      volumes:
+      - name: pot-volume
+        hostPath:
+          path: /home/mw/PoT_PRIVATEER
+          type: Directory
+      - name: pot-run-config
+        configMap:
+          name: pot-run-config
+          defaultMode: 0755

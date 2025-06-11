@@ -1,0 +1,127 @@
+# ServiceAccount para el controlador
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: controller-sa
+  namespace: scenario
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: controller-role
+rules:
+  # Para ver Pods en el namespace scenario:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+
+  # para que Kopf no falle en la discovery de CRDs:
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["get", "list", "watch"]
+
+  #para poder listar namespaces, que Kopf también consulta:
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+---
+# RoleBinding para asignar el Role al ServiceAccount
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: controller-role-binding
+  namespace: scenario
+subjects:
+  - kind: ServiceAccount
+    name: controller-sa
+    namespace: scenario
+roleRef:
+  kind: ClusterRole
+  name: controller-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Deployment del controlador con el ServiceAccount asociado
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller
+  namespace: scenario
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: controller
+  template:
+    metadata:
+      labels:
+        app: controller
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "controller-net",
+              "interface": "net1",
+              "ips": [ "10.0.0.10/24" ],
+              "mac": "02:42:0a:00:00:0a"
+            },
+            {
+              "name": "kafka-net",
+              "interface": "net2",
+              "ips": [ "10.2.1.10/24" ],
+              "mac": "02:42:0a:02:01:0a"
+            }
+          ]
+    spec:
+      serviceAccountName: controller-sa  
+      containers:
+      - name: controller
+        image: jorgealmansa/p4custom-kafka:latest
+        securityContext:
+          privileged: true
+        command:
+          - /bin/sh
+          - -c
+          - |
+            sudo sysctl -w net.ipv4.ip_forward=1
+            sudo ip route add 192.168.49.0/24 via 10.244.0.1 dev eth0
+            chmod +x /home/p4/pot/docker/run.sh
+            /home/p4/pot/docker/run.sh controller 4
+        volumeMounts:
+        - mountPath: /home/p4/pot
+          name: pot-volume
+          readOnly: false
+        - mountPath: /home/p4/pot/docker/run.sh
+          name: pot-run-config
+          subPath: run.sh
+          readOnly: false
+      - name: operator
+        image: jorgealmansa/p4custom-kafka:latest
+        securityContext:
+          privileged: true
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            ip route add 10.96.0.0/12 via 169.254.1.1 dev eth0 || echo "Ruta ya configurada"
+            sleep 30
+            # Ejecutar el operador en modo "standalone"
+            cp controller/switch.py /home/p4/tutorials/utils/p4runtime_lib/switch.py
+            echo "Copia"
+            kopf run --standalone controller/operator.py --namespace scenario
+        volumeMounts:
+        - name: operator-code
+          mountPath: /home/p4/pot
+          readOnly: false
+
+      volumes:
+      - name: pot-volume
+        hostPath:
+          path: /home/mw/PoT_PRIVATEER
+          type: Directory
+      - name: pot-run-config
+        configMap:
+          name: pot-run-config
+          defaultMode: 0755
+      - name: operator-code
+        hostPath:
+          path: /home/mw/PoT_PRIVATEER
+          type: Directory

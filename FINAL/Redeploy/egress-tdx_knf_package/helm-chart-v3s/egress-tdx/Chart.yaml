@@ -1,0 +1,4 @@
+apiVersion: v2
+name: egress-helmchart
+description: A Helm chart for deploying egressnode with tdx
+version: 0.1.0

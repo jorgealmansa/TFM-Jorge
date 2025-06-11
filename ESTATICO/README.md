@@ -17,3 +17,13 @@ kubectl apply -f k8s-deployments.yaml
 ```
 
 También es necesario copiar la carpeta de PoT_PRIVATEER.
+
+## PRUEBA DE CONECTIVIDAD
+```
+kubectl exec -it host1 -n scenario -- ping 10.1.2.3
+```
+
+## MÉTRICAS EN LA INFLUXDB
+```
+kubectl exec -it controller -n scenario -- influx -database 'int_telemetry_db' -execute 'SELECT * FROM int_telemetry'
+```

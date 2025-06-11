@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ─────────────────────────────── CONFIGURATION ────────────────────────────────
-TDX_DEPLOY_YAML="k8s-tdx.yaml"   # 1st deployment
-CONTROLLER_YAML="controller.yaml"           # 2nd deployment
-LOG_CONTAINER="trustee_as_1"                # container that emits attestation logs
-LOG_TIMEOUT=30                             # seconds to wait for evidences
+TDX_DEPLOY_YAML="ingress-tfs.yaml"   
+CONTROLLER_YAML="controller.yaml"          
+LOG_CONTAINER="trustee_as_1"               
+LOG_TIMEOUT=30                            
 
 PATTERNS=(
   "Quote DCAP check succeeded"
@@ -13,7 +12,7 @@ PATTERNS=(
   "CCEL integrity check succeeded"
   "Tdx Verifier/endorsement check passed"
 )
-# ───────────────────────────────────────────────────────────────────────────────
+
 
 GREEN='\033[0;32m'
 NC='\033[0m'      # reset colour
@@ -22,7 +21,6 @@ echo "------------- DEPLOYING NODES -------------"
 echo "kubectl apply -f ${TDX_DEPLOY_YAML}"
 kubectl apply -f "${TDX_DEPLOY_YAML}"
 
-# ── Wait for the container to appear ──────────────────────────────────────────
 echo -n "Waiting for attestation container '${LOG_CONTAINER}' … "
 until docker ps --format '{{.Names}}' | grep -q "^${LOG_CONTAINER}$"; do
   sleep 1
@@ -50,7 +48,7 @@ while IFS= read -r line; do
     exit 1
   fi
 
-  [[ $line =~ $regex ]] || continue             # skip unrelated log lines
+  [[ $line =~ $regex ]] || continue           
 
   printf "${GREEN}%s${NC}\n" "$line"
   for p in "${PATTERNS[@]}"; do

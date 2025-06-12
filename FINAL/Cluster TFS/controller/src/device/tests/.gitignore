@@ -1,0 +1,5 @@
+# Add here your files containing confidential testbed details such as IP addresses, ports, usernames, passwords, etc.
+Device_OpenConfig_Adva*
+Device_OpenConfig_Cisco*
+Device_OpenConfig_Infinera*
+Device_Transport_Api*

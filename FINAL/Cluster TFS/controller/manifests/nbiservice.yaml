@@ -1,0 +1,89 @@
+# Copyright 2022-2024 ETSI SDG TeraFlowSDN (TFS) (https://tfs.etsi.org/)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nbiservice
+spec:
+  selector:
+    matchLabels:
+      app: nbiservice
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        config.linkerd.io/skip-inbound-ports: "8762"
+        config.linkerd.io/skip-outbound-ports: "8762"
+      labels:
+        app: nbiservice
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: server
+          image: labs.etsi.org:5050/tfs/controller/nbi:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+            - containerPort: 9090
+            - containerPort: 9192
+            - containerPort: 8762
+          env:
+            - name: LOG_LEVEL
+              value: "INFO"
+            - name: IETF_NETWORK_RENDERER
+              value: "LIBYANG"
+            - name: WS_E2E_PORT
+              value: "8762"
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9090"]
+          livenessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9090"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nbiservice
+  labels:
+    app: nbiservice
+spec:
+  type: ClusterIP
+  selector:
+    app: nbiservice
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: grpc
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+    - name: metrics
+      protocol: TCP
+      port: 9192
+      targetPort: 9192
+    - name: ws
+      protocol: TCP
+      port: 8762
+      targetPort: 8762

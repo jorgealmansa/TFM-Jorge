@@ -1,0 +1,34 @@
+{
+    "contexts": [
+        {"context_id": {"context_uuid": {"uuid": "admin"}}}
+    ],
+    "topologies": [
+        {"topology_id": {"context_id": {"context_uuid": {"uuid": "admin"}}, "topology_uuid": {"uuid": "admin"}}}
+    ],
+    "devices": [
+        {
+            "device_id": {"device_uuid": {"uuid": "IP1"}}, "device_type": "emu-packet-router", "device_drivers": [0],
+            "device_endpoints": [], "device_operational_status": 0, "device_config": {"config_rules": [
+                {"action": 1, "custom": {"resource_key": "_connect/address", "resource_value": "127.0.0.1"}},
+                {"action": 1, "custom": {"resource_key": "_connect/port", "resource_value": "0"}},
+                {"action": 1, "custom": {"resource_key": "_connect/settings", "resource_value": {"endpoints": [
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP1"},
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP2"},
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP3"}
+                ]}}}
+            ]}
+        },
+        {
+            "device_id": {"device_uuid": {"uuid": "IP2"}}, "device_type": "emu-packet-router", "device_drivers": [0],
+            "device_endpoints": [], "device_operational_status": 0, "device_config": {"config_rules": [
+                {"action": 1, "custom": {"resource_key": "_connect/address", "resource_value": "127.0.0.1"}},
+                {"action": 1, "custom": {"resource_key": "_connect/port", "resource_value": "0"}},
+                {"action": 1, "custom": {"resource_key": "_connect/settings", "resource_value": {"endpoints": [
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP1"},
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP2"},
+                    {"sample_types": [], "type": "copper/internal", "uuid": "CTP3"}
+                ]}}}
+            ]}
+        }
+    ]
+}

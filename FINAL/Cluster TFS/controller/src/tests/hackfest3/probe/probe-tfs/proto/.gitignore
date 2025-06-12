@@ -1,0 +1,10 @@
+src/*/*
+
+# used to prevent breaking symbolic links from source code folders
+!src/*/.gitignore
+!src/python/__init__.py
+!src/erlang/rebar.config
+!src/erlang/rebar.lock
+!src/erlang/src/tfpb.app.src
+
+uml/generated

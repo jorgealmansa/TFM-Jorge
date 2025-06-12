@@ -1,0 +1,4 @@
+backend/wireshark
+backend/*.o
+backend/pathComp
+backend/pathComp-dbg

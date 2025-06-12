@@ -1,0 +1,16 @@
+# Avoid including these folders when building the components
+.git/
+.gitlab/
+.vscode/
+coverage/
+data/
+deploy/
+ecoc22/
+hackfest/
+manifests/
+nfvsdn22/
+oeccpsc22/
+ofc22/
+ofc23/
+scripts/
+tmp/

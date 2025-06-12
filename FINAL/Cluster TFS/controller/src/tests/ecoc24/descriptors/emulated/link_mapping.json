@@ -1,0 +1,34 @@
+{
+    "contexts": [
+        {"context_id": {"context_uuid": {"uuid": "admin"}}}
+    ],
+    "topologies": [
+        {"topology_id": {"context_id": {"context_uuid": {"uuid": "admin"}}, "topology_uuid": {"uuid": "admin"}}}
+    ],
+    "links": [
+        {"link_id": {"link_uuid": {"uuid": "IP1_CTP1-MGON1_OTP1"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP1"}}, "endpoint_uuid": {"uuid": "CTP1"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON1"}}, "endpoint_uuid": {"uuid": "OTP1"}}
+        ]},
+            {"link_id": {"link_uuid": {"uuid": "IP1_CTP2-MGON1_OTP2"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP1"}}, "endpoint_uuid": {"uuid": "CTP2"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON1"}}, "endpoint_uuid": {"uuid": "OTP2"}}
+        ]},
+        {"link_id": {"link_uuid": {"uuid": "IP1CTP3-MGON1_OTP3"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP1"}}, "endpoint_uuid": {"uuid": "CTP3"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON1"}}, "endpoint_uuid": {"uuid": "OTP3"}}
+        ]},            
+        {"link_id": {"link_uuid": {"uuid": "IP2_CTP1-MGON3_OTP1"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP2"}}, "endpoint_uuid": {"uuid": "CTP1"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON3"}}, "endpoint_uuid": {"uuid": "OTP1"}}
+        ]},
+            {"link_id": {"link_uuid": {"uuid": "IP2_CTP2-MGON3_OTP2"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP2"}}, "endpoint_uuid": {"uuid": "CTP2"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON3"}}, "endpoint_uuid": {"uuid": "OTP2"}}
+        ]},
+        {"link_id": {"link_uuid": {"uuid": "IP2_CTP3-MGON3_OTP3"}}, "link_endpoint_ids": [
+            {"device_id": {"device_uuid": {"uuid": "IP2"}}, "endpoint_uuid": {"uuid": "CTP3"}},
+            {"device_id": {"device_uuid": {"uuid": "MG-ON3"}}, "endpoint_uuid": {"uuid": "OTP3"}}
+        ]}
+    ]
+}

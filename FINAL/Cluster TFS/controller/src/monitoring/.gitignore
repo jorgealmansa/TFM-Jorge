@@ -1,0 +1,3 @@
+# Ignoring specific folders/files used internally while coding Monitoring component
+proto/
+genproto_win.sh

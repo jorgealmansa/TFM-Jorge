@@ -1,0 +1,365 @@
+
+[2025-05-22 08:32:30.544] /p4.v1.P4Runtime/SetForwardingPipelineConfig
+---
+Message too long (403502 bytes)! Skipping log...
+---
+
+[2025-05-22 08:32:30.647] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: MODIFY
+  entity {
+    table_entry {
+      table_id: 46921072
+      action {
+        action {
+          action_id: 28598302
+        }
+      }
+      is_default_action: true
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.649] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: MODIFY
+  entity {
+    table_entry {
+      table_id: 49807783
+      action {
+        action {
+          action_id: 28598302
+        }
+      }
+      is_default_action: true
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.651] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 46921072
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\002\003"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\001"
+        }
+      }
+      action {
+        action {
+          action_id: 30215141
+          params {
+            param_id: 1
+            value: "\002B\n\000\001\003"
+          }
+          params {
+            param_id: 2
+            value: "\002B\n\000\001\002"
+          }
+          params {
+            param_id: 3
+            value: "\000\002"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.653] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 46921072
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\001\003"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 30215141
+          params {
+            param_id: 1
+            value: "\002B\n\001\001\002"
+          }
+          params {
+            param_id: 2
+            value: "\002B\n\001\001\003"
+          }
+          params {
+            param_id: 3
+            value: "\000\001"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.654] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 46921072
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\001\004"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 30215141
+          params {
+            param_id: 1
+            value: "\002B\n\001\001\002"
+          }
+          params {
+            param_id: 2
+            value: "\002B\n\001\001\004"
+          }
+          params {
+            param_id: 3
+            value: "\000\001"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.655] /p4.v1.P4Runtime/Write
+---
+Message too long (1471 bytes)! Skipping log...
+---
+
+[2025-05-22 08:32:30.656] /p4.v1.P4Runtime/Write
+---
+Message too long (1414 bytes)! Skipping log...
+---
+
+[2025-05-22 08:32:30.657] /p4.v1.P4Runtime/Write
+---
+Message too long (1411 bytes)! Skipping log...
+---
+
+[2025-05-22 08:32:30.658] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 42982526
+      action {
+        action {
+          action_id: 22933703
+          params {
+            param_id: 1
+            value: "\002B\n\000\000\013"
+          }
+          params {
+            param_id: 2
+            value: "\002B\n\000\000\n"
+          }
+          params {
+            param_id: 3
+            value: "\000\003"
+          }
+          params {
+            param_id: 4
+            value: "\n\000\000\013"
+          }
+          params {
+            param_id: 5
+            value: "\n\000\000\n"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.658] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 36782487
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\001\003"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 33080812
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.659] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 36782487
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\001\004"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 33080812
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.660] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 36782487
+      match {
+        field_id: 1
+        lpm {
+          value: "\n\001\002\003"
+          prefix_len: 32
+        }
+      }
+      match {
+        field_id: 2
+        exact {
+          value: "\000\001"
+        }
+      }
+      action {
+        action {
+          action_id: 33080812
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.661] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    packet_replication_engine_entry {
+      clone_session_entry {
+        session_id: 1
+        replicas {
+          egress_port: 3
+          instance: 1
+        }
+      }
+    }
+  }
+}
+---
+
+[2025-05-22 08:32:30.703] /p4.v1.P4Runtime/Read
+---
+entities {
+  table_entry {
+  }
+}
+---

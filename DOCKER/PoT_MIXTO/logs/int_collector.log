@@ -1,0 +1,477 @@
+[2025-05-22 08:32:50,924] [INFO] - Influx client ping response: 1.8.10
+[2025-05-22 08:32:50,924] [INFO] - UDP server up and listening at UDP port: 8192
+[2025-05-22 08:33:19,795] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 54477)
+[2025-05-22 08:33:19,796] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddb20>
+[2025-05-22 08:33:19,797] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 60445)
+[2025-05-22 08:33:19,797] [INFO] - <__main__.IntReport object at 0x7f2f9c5dd970>
+[2025-05-22 08:33:19,799] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 57647)
+[2025-05-22 08:33:19,799] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddca0>
+[2025-05-22 08:33:19,800] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 63806)
+[2025-05-22 08:33:19,800] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7c10>
+[2025-05-22 08:33:19,801] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 61721)
+[2025-05-22 08:33:19,801] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a30>
+[2025-05-22 08:33:19,804] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 54422)
+[2025-05-22 08:33:19,804] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7850>
+[2025-05-22 08:33:19,804] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 52510)
+[2025-05-22 08:33:19,804] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7820>
+[2025-05-22 08:33:19,805] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 52603)
+[2025-05-22 08:33:19,805] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a00>
+[2025-05-22 08:33:19,807] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 52211)
+[2025-05-22 08:33:19,807] [INFO] - <__main__.IntReport object at 0x7f2f9c5e77c0>
+[2025-05-22 08:33:19,807] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 61734)
+[2025-05-22 08:33:19,807] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7b20>
+[2025-05-22 08:33:19,807] [INFO] - Sending 10 reports to influx and Kafka from last 28.883588314056396 secs
+[2025-05-22 08:33:20,396] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:20,927] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:21,278] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:21,865] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:22,216] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:22,594] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:23,214] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:23,574] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:24,121] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:24,659] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:33:24,664] [INFO] - Json body for influx:
+ [{'fields': {'CML': 42,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 9,
+             'Sequence Number': 0,
+             'Service Index': 4,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 0},
+ {'fields': {'CML': 2,
+             'Container ID': '21bde6abbf4b',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 9,
+             'Sequence Number': 0,
+             'Service Index': 3,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.12'},
+  'measurement': 'int_telemetry',
+  'time': 1},
+ {'fields': {'CML': 37,
+             'Container ID': '1ea7fafc6830',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 9,
+             'Sequence Number': 0,
+             'Service Index': 2,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.13'},
+  'measurement': 'int_telemetry',
+  'time': 3},
+ {'fields': {'CML': 20,
+             'Container ID': '24d56c0efa6a',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 9,
+             'Sequence Number': 0,
+             'Service Index': 1,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.14'},
+  'measurement': 'int_telemetry',
+  'time': 4},
+ {'fields': {'CML': 62,
+             'Container ID': 'bb9640586fce',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 9,
+             'Sequence Number': 0,
+             'Service Index': 0,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.15'},
+  'measurement': 'int_telemetry',
+  'time': 5},
+ {'fields': {'CML': 14,
+             'Container ID': 'bb9640586fce',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 52,
+             'Sequence Number': 0,
+             'Service Index': 4,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.15'},
+  'measurement': 'int_telemetry',
+  'time': 8},
+ {'fields': {'CML': 45,
+             'Container ID': '24d56c0efa6a',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 52,
+             'Sequence Number': 0,
+             'Service Index': 3,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.14'},
+  'measurement': 'int_telemetry',
+  'time': 8},
+ {'fields': {'CML': 30,
+             'Container ID': '1ea7fafc6830',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 52,
+             'Sequence Number': 0,
+             'Service Index': 2,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.13'},
+  'measurement': 'int_telemetry',
+  'time': 9},
+ {'fields': {'CML': 26,
+             'Container ID': '21bde6abbf4b',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 52,
+             'Sequence Number': 0,
+             'Service Index': 1,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.12'},
+  'measurement': 'int_telemetry',
+  'time': 11},
+ {'fields': {'CML': 26,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 52,
+             'Sequence Number': 0,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 11}]
+[2025-05-22 08:33:24,692] [INFO] -  10 int reports sent to the influx
+[2025-05-22 08:38:24,977] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 62200)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddb20>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 54369)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5dd970>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 62299)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddca0>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 56491)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9cac1e80>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 57084)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7b20>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 65307)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7c10>
+[2025-05-22 08:38:24,980] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 62124)
+[2025-05-22 08:38:24,980] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a30>
+[2025-05-22 08:38:24,981] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 58097)
+[2025-05-22 08:38:24,981] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7850>
+[2025-05-22 08:38:24,981] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 63851)
+[2025-05-22 08:38:24,981] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7820>
+[2025-05-22 08:38:24,981] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 58071)
+[2025-05-22 08:38:24,981] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a00>
+[2025-05-22 08:38:24,981] [INFO] - Sending 10 reports to influx and Kafka from last 0.0059947967529296875 secs
+[2025-05-22 08:38:25,563] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:26,102] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:26,629] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:27,188] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:27,733] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:28,255] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:28,606] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:29,173] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:29,519] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:29,850] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:38:29,855] [INFO] - Json body for influx:
+ [{'fields': {'CML': 36,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 62,
+             'Sequence Number': 1,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 3,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 29,
+             'Sequence Number': 2,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 39,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 65,
+             'Sequence Number': 3,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 15,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 41,
+             'Sequence Number': 4,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 61,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 54,
+             'Sequence Number': 5,
+             'Service Index': 4,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 47,
+             'Container ID': '21bde6abbf4b',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 54,
+             'Sequence Number': 5,
+             'Service Index': 3,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.12'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 36,
+             'Container ID': '1ea7fafc6830',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 54,
+             'Sequence Number': 5,
+             'Service Index': 2,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.13'},
+  'measurement': 'int_telemetry',
+  'time': 305184},
+ {'fields': {'CML': 3,
+             'Container ID': '24d56c0efa6a',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 54,
+             'Sequence Number': 5,
+             'Service Index': 1,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.14'},
+  'measurement': 'int_telemetry',
+  'time': 305185},
+ {'fields': {'CML': 40,
+             'Container ID': 'bb9640586fce',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 54,
+             'Sequence Number': 5,
+             'Service Index': 0,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.15'},
+  'measurement': 'int_telemetry',
+  'time': 305185},
+ {'fields': {'CML': 39,
+             'Container ID': 'bb9640586fce',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 16,
+             'Sequence Number': 5,
+             'Service Index': 4,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.15'},
+  'measurement': 'int_telemetry',
+  'time': 305185}]
+[2025-05-22 08:38:29,869] [INFO] -  10 int reports sent to the influx
+[2025-05-22 08:43:30,028] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 56203)
+[2025-05-22 08:43:30,029] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddb20>
+[2025-05-22 08:43:30,029] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 50914)
+[2025-05-22 08:43:30,030] [INFO] - <__main__.IntReport object at 0x7f2f9c5dd970>
+[2025-05-22 08:43:30,030] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 49270)
+[2025-05-22 08:43:30,030] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddca0>
+[2025-05-22 08:43:30,030] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 63770)
+[2025-05-22 08:43:30,030] [INFO] - <__main__.IntReport object at 0x7f2f9cac1e80>
+[2025-05-22 08:43:30,030] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 56647)
+[2025-05-22 08:43:30,030] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a00>
+[2025-05-22 08:43:30,030] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 53613)
+[2025-05-22 08:43:30,030] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7b20>
+[2025-05-22 08:43:30,031] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 62259)
+[2025-05-22 08:43:30,031] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7c10>
+[2025-05-22 08:43:30,031] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 61815)
+[2025-05-22 08:43:30,031] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a30>
+[2025-05-22 08:43:30,031] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 64263)
+[2025-05-22 08:43:30,031] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7850>
+[2025-05-22 08:43:30,031] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 49504)
+[2025-05-22 08:43:30,031] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7820>
+[2025-05-22 08:43:30,031] [INFO] - Sending 10 reports to influx and Kafka from last 0.003426074981689453 secs
+[2025-05-22 08:43:30,632] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:30,991] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:31,511] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:32,043] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:32,619] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:33,151] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:33,697] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:34,229] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:34,765] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:35,270] [INFO] - Updategeolocation: 10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50
+[2025-05-22 08:43:35,275] [INFO] - Json body for influx:
+ [{'fields': {'CML': 9,
+             'Container ID': '24d56c0efa6a',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 16,
+             'Sequence Number': 5,
+             'Service Index': 3,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.14'},
+  'measurement': 'int_telemetry',
+  'time': 610233},
+ {'fields': {'CML': 4,
+             'Container ID': '1ea7fafc6830',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 16,
+             'Sequence Number': 5,
+             'Service Index': 2,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.13'},
+  'measurement': 'int_telemetry',
+  'time': 610234},
+ {'fields': {'CML': 53,
+             'Container ID': '21bde6abbf4b',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 16,
+             'Sequence Number': 5,
+             'Service Index': 1,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.12'},
+  'measurement': 'int_telemetry',
+  'time': 610234},
+ {'fields': {'CML': 57,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 16,
+             'Sequence Number': 5,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610234},
+ {'fields': {'CML': 9,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 35,
+             'Sequence Number': 6,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610234},
+ {'fields': {'CML': 52,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 11,
+             'Sequence Number': 7,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610234},
+ {'fields': {'CML': 42,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 1,
+             'Sequence Number': 8,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610235},
+ {'fields': {'CML': 61,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 1,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 20,
+             'Sequence Number': 9,
+             'Service Index': 0,
+             'Service Path Identifier': 23,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610235},
+ {'fields': {'CML': 30,
+             'Container ID': 'e65c472d55ed',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 37,
+             'Sequence Number': 10,
+             'Service Index': 4,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.11'},
+  'measurement': 'int_telemetry',
+  'time': 610235},
+ {'fields': {'CML': 30,
+             'Container ID': '21bde6abbf4b',
+             'Dropped': 0,
+             'Geolocation': '10.1.2.0/24,ES,Madrid,Madrid,40.4165,-3.7026,50',
+             'RND': 37,
+             'Sequence Number': 10,
+             'Service Index': 3,
+             'Service Path Identifier': 55,
+             'ServiceID': '57310caf-bcc4-4008-82b8-6cfa6263bbcd',
+             'Switch IP': '10.0.0.12'},
+  'measurement': 'int_telemetry',
+  'time': 610235}]
+[2025-05-22 08:43:35,284] [INFO] -  10 int reports sent to the influx
+[2025-05-22 08:48:36,088] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 64431)
+[2025-05-22 08:48:36,090] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddb20>
+[2025-05-22 08:48:36,090] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 57014)
+[2025-05-22 08:48:36,090] [INFO] - <__main__.IntReport object at 0x7f2f9c5dd970>
+[2025-05-22 08:48:36,090] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 63360)
+[2025-05-22 08:48:36,090] [INFO] - <__main__.IntReport object at 0x7f2f9c5ddca0>
+[2025-05-22 08:48:36,090] [INFO] - Received INT report (21 bytes) from: ('10.0.0.15', 52479)
+[2025-05-22 08:48:36,090] [INFO] - <__main__.IntReport object at 0x7f2f9cac1e80>
+[2025-05-22 08:48:36,091] [INFO] - Received INT report (21 bytes) from: ('10.0.0.14', 52018)
+[2025-05-22 08:48:36,091] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7820>
+[2025-05-22 08:48:36,091] [INFO] - Received INT report (21 bytes) from: ('10.0.0.13', 54354)
+[2025-05-22 08:48:36,091] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7a00>
+[2025-05-22 08:48:36,091] [INFO] - Received INT report (21 bytes) from: ('10.0.0.12', 59831)
+[2025-05-22 08:48:36,091] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7b20>
+[2025-05-22 08:48:36,091] [INFO] - Received INT report (21 bytes) from: ('10.0.0.11', 49542)
+[2025-05-22 08:48:36,091] [INFO] - <__main__.IntReport object at 0x7f2f9c5e7c10>

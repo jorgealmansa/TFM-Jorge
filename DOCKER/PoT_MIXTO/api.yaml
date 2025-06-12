@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  title: Command Execution API
+  version: 1.1.0
+  description: API para ejecutar comandos y scripts.
+paths:
+  /run-command:
+    post:
+      summary: Ejecutar un comando
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                script:
+                  type: string
+                  description: >
+                    El nombre del script a ejecutar (ubicado en /home/ubuntu/PoT_MIXTO). 
+                    Si es "scenario-generator.sh", se requieren los campos **number** y **option**. 
+                    Si es "scenario-generator_nodes.sh", se requieren los campos **number1**, **number2** y **option**.
+                  example: "scenario-generator.sh"
+                number:
+                  type: integer
+                  description: (Para scenario-generator.sh) Un número entre 1 y 10.
+                  example: 4
+                  minimum: 1
+                  maximum: 10
+                option:
+                  type: string
+                  description: Una opción para el comando.
+                  example: "docker"
+                number1:
+                  type: integer
+                  description: (Para scenario-generator_nodes.sh) Primer número entre 1 y 10.
+                  example: 4
+                  minimum: 1
+                  maximum: 10
+                number2:
+                  type: integer
+                  description: (Para scenario-generator_nodes.sh) Segundo número entre 1 y 10.
+                  example: 6
+                  minimum: 0
+                  maximum: 100
+              required:
+                - script
+                - option
+      responses:
+        '200':
+          description: Comando ejecutado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  output:
+                    type: string
+                    example: "Resultado del comando"
+                  error:
+                    type: string
+                    example: "Errores del comando, si los hay"
+        '400':
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Descripción del error"
+        '500':
+          description: Error del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Descripción del error"
+  /delete-script:
+    delete:
+      summary: Ejecutar un script para eliminar el escenario (ubicado en /home/ubuntu/PoT_MIXTO)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                script:
+                  type: string
+                  description: El nombre del script a ejecutar para eliminar el escenario.
+                  example: "destroy.sh"
+              required:
+                - script
+      responses:
+        '200':
+          description: Script ejecutado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  output:
+                    type: string
+                    example: "Resultado del comando"
+                  error:
+                    type: string
+                    example: "Errores del comando, si los hay"
+        '400':
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Descripción del error"
+        '500':
+          description: Error del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Descripción del error"
+  /get-config:
+    get:
+      summary: Obtener la configuración actual
+      responses:
+        '200':
+          description: Configuración actual devuelta exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  script:
+                    type: string
+                    description: El nombre del script actual.
+                    example: "/home/ubuntu/PoT_MIXTO/scenario-generator.sh"
+                  params:
+                    type: array
+                    description: Lista de parámetros actuales.
+                    items:
+                      type: string
+                    example: ["4", "docker"]

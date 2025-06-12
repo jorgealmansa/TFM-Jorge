@@ -17,3 +17,5 @@ Está compuesto por:
 - Código que evalúa la confianza de la red desde el Clúster OSM
 - Controlador Teraflow desplegado en Clúster TFS
 - Redespliegue de EgressNode en TEE empleando CoCo en Clúster 3
+### Docker
+Este escenario despliega las mejoras en Docker
